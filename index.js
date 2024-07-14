@@ -88,11 +88,9 @@ io.on('connection', (socket) => {
     })
 })
 
-module.exports = app
-// module.exports = server
+// module.exports = app
+module.exports = server
 
-if (!process.env.VERCEL) {
-    server.listen(PORT, () => {
-        console.log(`listening on port: ${PORT}`)
-    })
-}
+server.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}`)
+})

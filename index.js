@@ -6,10 +6,6 @@ const { Server } = require('socket.io')
 
 const app = express()
 
-app.use(cors({
-    origin: '*'
-}))
-
 const server = createServer(app)
 const io = new Server(server, {
     cors: {
@@ -17,7 +13,9 @@ const io = new Server(server, {
     }
 })
 
-const PORT = process.env.PORT || 8000
+app.use(cors())
+
+const PORT = process.env.PORT || 5000
 
 function getTime() {
     const now = new Date();
@@ -89,8 +87,8 @@ io.on('connection', (socket) => {
     })
 })
 
-// module.exports = app
-module.exports = server
+module.exports = app
+// module.exports = server
 
 server.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`)

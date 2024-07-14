@@ -90,7 +90,8 @@ io.on('connection', (socket) => {
     })
 })
 
-module.exports = server
+module.exports = app
+// module.exports = server
 
 if (!process.env.VERCEL) {
     server.listen(PORT, () => {

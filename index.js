@@ -4,6 +4,9 @@ const { createServer } = require('http')
 const { Server } = require('socket.io')
 
 const app = express()
+
+app.use(cors())
+
 const server = createServer(app)
 const io = new Server(server, {
     cors: {
@@ -26,7 +29,6 @@ function getTime() {
     return `${hours}:${minutes} ${ampm}`;
 }
 
-app.use(cors())
 
 let connectedClientsCount = {}
 

@@ -13,7 +13,7 @@ const io = new Server(server, {
     }
 })
 
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 
 function getTime() {
     const now = new Date();
@@ -90,6 +90,10 @@ io.on('connection', (socket) => {
     })
 })
 
-server.listen(PORT, () => {
-    console.log(`listening on port: ${PORT}`)
-})
+module.exports = app
+
+if (!process.env.VERCEL) {
+    server.listen(PORT, () => {
+        console.log(`listening on port: ${PORT}`)
+    })
+}

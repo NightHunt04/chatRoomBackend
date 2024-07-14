@@ -1,3 +1,4 @@
+require('dotenv').config()
 const cors = require('cors')
 const express = require('express')
 const { createServer } = require('http')
@@ -10,9 +11,7 @@ app.use(cors())
 const server = createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: '*',
-        methods: ['GET', 'POST'],
-        credentials: true
+        origin: 'https://chat-room-backend-sable.vercel.app/',
     }
 })
 
